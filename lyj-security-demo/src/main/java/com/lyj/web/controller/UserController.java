@@ -3,6 +3,7 @@ package com.lyj.web.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lyj.dto.User;
 import com.lyj.dto.UserQueryCondition;
+import com.lyj.exception.UserNotExistException;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.data.domain.Pageable;
@@ -24,11 +25,12 @@ import java.util.List;
 public class UserController {
 
     @PostMapping
-    public User create(@Valid @RequestBody User user, BindingResult errors){
+//    , BindingResult errors
+    public User create(@Valid @RequestBody User user){
 
-        if(errors.hasErrors()){
-            errors.getAllErrors().stream().forEach(error-> System.out.println(error.getDefaultMessage()));
-        }
+//        if(errors.hasErrors()){
+//            errors.getAllErrors().stream().forEach(error-> System.out.println(error.getDefaultMessage()));
+//        }
         System.out.println(user.getId());
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
@@ -78,10 +80,12 @@ public class UserController {
     @GetMapping (value = "/{id:\\d+}")
     @JsonView(User.UserDetailView.class)
     public User getInfo(@PathVariable(name = "id") String id){
-        User user=new User();
-        user.setUsername("tom");
-
-        return user;
+        throw new UserNotExistException(id);
+//     throw new RuntimeException("user not exist");
+//        User user=new User();
+//        user.setUsername("tom");
+//
+//        return user;
     }
 
 
