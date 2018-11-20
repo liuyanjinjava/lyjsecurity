@@ -12,8 +12,8 @@ import java.util.Date;
  * @auther lyj
  * @date 2018/11/20 0020 上午 11:48
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class TimeAspect {
 
     @Around("execution(* com.lyj.web.controller.UserController.*(..))")

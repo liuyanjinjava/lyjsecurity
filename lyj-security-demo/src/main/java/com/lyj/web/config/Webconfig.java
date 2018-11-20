@@ -16,7 +16,7 @@ import java.util.List;
  * @auther lyj
  * @date 2018/11/20 0020 上午 11:00
  */
-@Configuration
+//@Configuration
 public class Webconfig extends WebMvcConfigurerAdapter {
 
     @Autowired
