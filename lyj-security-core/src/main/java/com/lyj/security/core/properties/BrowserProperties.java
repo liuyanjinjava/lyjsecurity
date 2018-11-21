@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 
 public class BrowserProperties {
-      private String loginpage="/lyj-signIn.html";
+      private String loginpage="/demo-signIn.html";
 
     public String getLoginpage() {
         return loginpage;
